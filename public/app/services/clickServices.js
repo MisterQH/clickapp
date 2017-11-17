@@ -11,5 +11,9 @@ angular.module('clickServices', [])
      return $http.get('api/click');
   }
 
+  clickFactory.getList = function() {
+    return $http.get('api/clicklist');
+  }
+
   return clickFactory;
 });

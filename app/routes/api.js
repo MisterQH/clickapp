@@ -16,7 +16,7 @@ module.exports = function(router) {
       res.json({success: true, message: 'Click added!'});
     }
     });
-    
+
   });
 
   //Get clicks
@@ -28,6 +28,18 @@ module.exports = function(router) {
       });
 
       res.json({'clicks': clickCount});
+    });
+  });
+
+  router.get('/clicklist', function(req, res) {
+    Click.find().sort('-date').limit(30).exec(function(err, clicks) {
+      var clicklist = [];
+
+      clicks.forEach(function(click) {
+        clicklist.push(click);
+      });
+
+      res.send(clicklist);
     });
   });
 

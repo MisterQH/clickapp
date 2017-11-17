@@ -10,9 +10,18 @@ angular.module('clickControllers', ['clickServices'])
     $location.path('/index');
   };
 
+
   this.getClick = function() {
     Click.get().then(function(data) {
-      app.data = data.data.clicks;
+      app.clicks = data.data.clicks;
+
+    });
+
+    Click.getList().then(function(data) {
+      app.clickList = [];
+      data.data.reverse().forEach(function(click) {
+          app.clickList.push(click);
+      });
     });
   };
 });

@@ -1,10 +1,25 @@
 <div class="jumbotron" data-ng-init="main.getClick()" align="center">
-          <h1>Button has been clicked {{ main.data }} times</h1>
-          <br>
-          <p class="lead"></p>
-          <div align="center">
-          <button  type="button" class="btn btn-success btn-lg" ng-click="main.regClick()">
-  				Click!
-		  </button>
-		  </div>
+  <h1>Button has been clicked {{ main.clicks }} times</h1>
+  <br>
+  <p class="lead"></p>
+  <div align="center">
+    <button  type="button" class="btn btn-success btn-lg" ng-click="main.regClick()">
+      Click!
+    </button>
+  </div>
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="date in main.clickList">
+      <td>{{ date._id }}</td>
+      <td>{{ date.date }}</td>
+    </tr>
+  </tbody>
+</table>
