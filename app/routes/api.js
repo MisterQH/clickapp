@@ -7,8 +7,8 @@ module.exports = function(router) {
   router.post('/click', function(req, res) {
     var click = new Click();
     var date = new Date();
-    var ip = req.ip;
-    //var ip = req.headers['x-appengine-user-ip'] || req.ip;
+    //var ip = req.ip;
+    var ip = req.headers['x-forwarded-for'] || req.ip;
     if (ip.substr(0, 7) == "::ffff:") {
         ip = ip.substr(7)
     }
