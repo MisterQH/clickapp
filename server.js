@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use('/api', appRoutes);
+app.enable('trust-proxy');
 
 mongoose.connect('mongodb://localhost:27017/click', function(err) {
   if (err) {
