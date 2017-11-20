@@ -14,12 +14,14 @@
     <tr>
       <th>ID</th>
       <th>Date</th>
+      <th>IP</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="date in main.clickList">
       <td>{{ date._id }}</td>
-      <td>{{ date.date }}</td>
+      <td>{{ date.dateStr }}</td>
+      <td>{{ date.ip }}</td>
     </tr>
   </tbody>
 </table>

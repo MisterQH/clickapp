@@ -18,8 +18,26 @@ angular.module('clickControllers', ['clickServices'])
     });
 
     Click.getList().then(function(data) {
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       app.clickList = [];
-      data.data.reverse().forEach(function(click) {
+      data.data.forEach(function(click) {
+          var date = new Date(click.date);
+          click.day = date.getDate();
+          click.month = months[date.getMonth()];
+          click.year = date.getFullYear();
+          click.hour = date.getHours()-1;
+          click.minute = date.getMinutes();
+          if(click.minute < 10){
+            click.minute = "0" + String(click.minute);
+          }
+          click.second = date.getSeconds();
+          if(click.second < 10){
+            click.second = "0" + String(click.second);
+          }
+          click.milli = date.getMilliseconds();
+          var dateStr = String(click.day) + " " + String(click.month) + " " + String(click.year) + " " +
+                        String(click.hour) + ":" + String(click.minute) + ":" + String(click.second) + "." + String(click.milli);
+          click.dateStr = dateStr;
           app.clickList.push(click);
       });
     });
