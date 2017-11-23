@@ -5,17 +5,8 @@ angular.module('clickControllers', ['clickServices'])
   var app = this;
 
   this.regClick = function() {
-    var address = 'http://ipv4.myexternalip.com/json';
-    var regData = {};
-    $http.get(address).then(function(result) {
-        console.log(result.data.ip);
-        regData.ip = result.data.ip;
-        Click.create(regData);
-        $location.path('/index');
-    }, function(e) {
-        alert("error");
-    });
-
+    Click.create();
+    $location.path('/index');
   };
 
 

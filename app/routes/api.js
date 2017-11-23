@@ -7,7 +7,9 @@ module.exports = function(router) {
   router.post('/click', function(req, res) {
     var click = new Click();
     var date = new Date();
-    click.ip = req.body.ip;
+    //click.ip = req.body.ip;
+    click.ip = req.headers['x-forwarded-for'];
+    console.log(req.headers);
     click.date = date;
     click.save(function(err) {
     if (err) {

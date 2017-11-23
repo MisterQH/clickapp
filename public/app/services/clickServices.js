@@ -3,8 +3,8 @@ angular.module('clickServices', [])
 .factory('Click', function($http) {
   var clickFactory = {};
 
-  clickFactory.create = function(regData) {
-     return $http.post('api/click', regData);
+  clickFactory.create = function() {
+     return $http.post('api/click');
   }
 
   clickFactory.get = function() {
